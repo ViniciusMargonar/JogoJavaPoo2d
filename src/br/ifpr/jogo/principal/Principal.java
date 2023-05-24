@@ -2,13 +2,17 @@ package br.ifpr.jogo.principal;
 
 import javax.swing.JFrame;
 
-public class Principal extends JFrame{
+import br.ifpr.jogo.modelo.Fase;
+public class Principal extends JFrame {
 
-    public Principal(){
+    public Principal() {
+        Fase fase = new Fase();
+        super.add(fase);
         setVisible(true);
-        setSize(640, 400);
+        setSize(1920, 1080);
         setTitle("Meu Jogo");
         setLocationRelativeTo(null);
+
     }
 
     public static void main(String[] args) {
