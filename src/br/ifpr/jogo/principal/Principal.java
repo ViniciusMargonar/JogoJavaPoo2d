@@ -6,7 +6,7 @@ public class Principal extends JFrame{
 
     public Principal(){
         setVisible(true);
-        setSize(500, 500);
+        setSize(640, 400);
         setTitle("Meu Jogo");
         setLocationRelativeTo(null);
     }
