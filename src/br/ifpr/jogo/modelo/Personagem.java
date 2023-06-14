@@ -17,7 +17,7 @@ public class Personagem {
 
     public Personagem(){
         this.posicaoEmX = 100;
-        this.posicaoEmY = 500;
+        this.posicaoEmY = 740;
     }
 
     public void carregar(){

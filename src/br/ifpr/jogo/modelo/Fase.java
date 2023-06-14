@@ -14,7 +14,7 @@ public class Fase extends JPanel{
 
     public Fase() {
 
-        ImageIcon carregando = new ImageIcon("recursos\\planoDeFundo.png");
+        ImageIcon carregando = new ImageIcon("recursos\\planoDeFundo.jpg");
         this.planoDeFundo = carregando.getImage();
 
         this.personagem = new Personagem();
