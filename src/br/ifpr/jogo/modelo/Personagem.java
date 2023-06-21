@@ -4,20 +4,25 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import java.awt.event.KeyEvent;
+
 public class Personagem {
     private int posicaoEmX;
     private int posicaoEmY;
     private int deslocamentoEmX;
-    private int deslocamentooEmY;
+    private int deslocamentoEmY;
     private Image imagem;
     private int larguraImagem;
     private int alturaImagem;
+    private static final int DESLOCAMENTO = 10;
+    private static final int POSICAO_INICIAL_EM_X = 100;
+    private static final int POSICAO_INICIAL_EM_Y = 740;
 
 
 
     public Personagem(){
-        this.posicaoEmX = 100;
-        this.posicaoEmY = 740;
+        this.posicaoEmX = POSICAO_INICIAL_EM_X;
+        this.posicaoEmY = POSICAO_INICIAL_EM_Y;
     }
 
     public void carregar(){
@@ -27,6 +32,74 @@ public class Personagem {
         this.alturaImagem = this.imagem.getHeight(null);
     }
 
+    public void atualizar() {
+    this.posicaoEmX = this.posicaoEmX + this.deslocamentoEmX;
+    this.posicaoEmY = this.posicaoEmY + this.deslocamentoEmY;
+    }
+
+    public void mover(KeyEvent tecla) {
+    int codigo = tecla.getKeyCode();
+    switch (codigo) {
+        case KeyEvent.VK_UP:
+            this.deslocamentoEmY = -DESLOCAMENTO;
+            break;
+        case KeyEvent.VK_W:
+            this.deslocamentoEmY = -DESLOCAMENTO;
+            break;
+        case KeyEvent.VK_DOWN:
+            this.deslocamentoEmY = DESLOCAMENTO;
+            break;
+        case KeyEvent.VK_S:
+            this.deslocamentoEmY = DESLOCAMENTO;
+            break;
+        case KeyEvent.VK_LEFT:
+            this.deslocamentoEmX = -DESLOCAMENTO;
+            break;
+        case KeyEvent.VK_A:
+            this.deslocamentoEmX = -DESLOCAMENTO;
+            break;
+        case KeyEvent.VK_RIGHT:
+            this.deslocamentoEmX = DESLOCAMENTO;
+            break;
+        case KeyEvent.VK_D:
+            this.deslocamentoEmX = DESLOCAMENTO;
+            break;
+        default:
+            break;
+        }
+    }
+
+    public void parar(KeyEvent tecla) {
+    int codigo = tecla.getKeyCode();
+    switch (codigo) {
+        case KeyEvent.VK_UP:
+             deslocamentoEmY = 0;
+             break;
+        case KeyEvent.VK_W:
+             deslocamentoEmY = 0;
+             break;
+        case KeyEvent.VK_DOWN:
+            deslocamentoEmY = 0;
+            break;
+        case KeyEvent.VK_S:
+            deslocamentoEmY = 0;
+            break;
+        case KeyEvent.VK_LEFT:
+            deslocamentoEmX = 0;
+            break;
+        case KeyEvent.VK_A:
+            deslocamentoEmX = 0;
+            break;
+        case KeyEvent.VK_RIGHT:
+            deslocamentoEmX = 0;
+            break;
+        case KeyEvent.VK_D:
+            deslocamentoEmX = 0;
+            break;
+        default:
+            break;
+    }
+}
 
     public int getPosicaoEmX() {
         return this.posicaoEmX;
@@ -53,11 +126,11 @@ public class Personagem {
     }
 
     public int getDeslocamentooEmY() {
-        return this.deslocamentooEmY;
+        return this.deslocamentoEmY;
     }
 
     public void setDeslocamentooEmY(int deslocamentooEmY) {
-        this.deslocamentooEmY = deslocamentooEmY;
+        this.deslocamentoEmY = deslocamentooEmY;
     }
 
     public Image getImagem() {
