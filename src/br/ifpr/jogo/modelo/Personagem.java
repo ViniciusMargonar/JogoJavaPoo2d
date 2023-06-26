@@ -17,7 +17,7 @@ public class Personagem {
     private int alturaImagem;
     private static final int DESLOCAMENTO = 10;
     private static final int POSICAO_INICIAL_EM_X = 100;
-    private static final int POSICAO_INICIAL_EM_Y = 740;
+    private static final int POSICAO_INICIAL_EM_Y = 100;
     private ArrayList<Tiro> tiros;
 
 

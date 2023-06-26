@@ -68,10 +68,11 @@ public class Fase extends JPanel implements ActionListener, KeyListener{
     public void actionPerformed(ActionEvent e) {
             personagem.atualizar();
             ArrayList<Tiro> tiros = personagem.getTiros();
-            for (Tiro tiro : tiros) {
+            for (int i = tiros.size() - 1; i >= 0; i--) {
+                Tiro tiro = tiros.get(i);
                 if (tiro.getPosicaoEmX() > LARGURA_DA_JANELA)
                     // Remover da lista se estiver fora do campo de visão (LARGURA_DA_TELA)
-                    tiros.remove(tiro);
+                    tiros.remove(i);
                 else
                     // Atualizar a posição do tiro.
                     tiro.atualizar();
