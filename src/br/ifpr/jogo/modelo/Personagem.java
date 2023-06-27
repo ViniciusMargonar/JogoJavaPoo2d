@@ -14,18 +14,20 @@ import java.util.ArrayList;
         private Image imagem;
         private int larguraImagem;
         private int alturaImagem;
-        private int velocidadeDeslocamento = 100;
+        private static final int velocidadeDeslocamento = 10;
         private static final int POSICAO_INICIAL_X = 100;
         private static final int POSICAO_INICIAL_Y = 100;
         private ArrayList<Tiro> tiros;
+        private ArrayList<Especial> especiais;
+         
 
 
 
     public Personagem(int velocidadeDeslocamento) {
         this.posicaoEmX = POSICAO_INICIAL_X;
         this.posicaoEmY = POSICAO_INICIAL_Y;
-        this.velocidadeDeslocamento = velocidadeDeslocamento;
         this.tiros = new ArrayList<Tiro>();
+        this.especiais =  new ArrayList<Especial>();
 
     }
 
@@ -45,9 +47,21 @@ import java.util.ArrayList;
         int frenteNave = this.posicaoEmX + this.larguraImagem;
         int meioNave =  this.posicaoEmY + (this.alturaImagem / 2);
 
+        
         Tiro tiro = new Tiro(frenteNave, meioNave);
         this.tiros.add(tiro);
     }
+
+    public void ultimate(){
+        int frenteNave = this.posicaoEmX + this.larguraImagem;
+        int meioNave =  this.posicaoEmY + (this.alturaImagem / 2);
+
+        
+        Especial especial = new Especial(frenteNave, meioNave);
+        this.especiais.add(especial);
+    }
+
+    
 
     public void mover(KeyEvent tecla){ // movimenta o personagem
         int codigo = tecla.getKeyCode();
@@ -174,10 +188,6 @@ import java.util.ArrayList;
         return this.velocidadeDeslocamento;
     }
 
-    public void setVelocidadeDeslocamento(int velocidadeDeslocamento) {
-        this.velocidadeDeslocamento = velocidadeDeslocamento;
-    }
-
     public ArrayList<Tiro> getTiros() {
         return this.tiros;
     }
@@ -185,6 +195,16 @@ import java.util.ArrayList;
     public void setTiros(ArrayList<Tiro> tiros) {
         this.tiros = tiros;
     }
+
+
+    public ArrayList<Especial> getEspeciais() {
+        return this.especiais;
+    }
+
+    public void setEspeciais(ArrayList<Especial> especiais) {
+        this.especiais = especiais;
+    }
+
     
 
 }

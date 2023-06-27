@@ -44,7 +44,12 @@ public class Fase extends JPanel implements ActionListener, KeyListener{
         Graphics2D graficos = (Graphics2D) g;
         graficos.drawImage(this.planoDeFundo, 0, 0,null);
         graficos.drawImage(this.personagem.getImagem(), this.personagem.getPosicaoEmX(), this.personagem.getPosicaoEmY(),null);
-        ArrayList<Tiro> tiros = personagem.getTiros();        
+        ArrayList<Especial> especiais = personagem.getEspeciais();
+        for (Especial especial : especiais) {
+            especial.carregar();
+            graficos.drawImage(especial.getImagem(), especial.getPosicaoEmX(), especial.getPosicaoEmY(), this); 
+        }   
+        ArrayList<Tiro> tiros = personagem.getTiros();   
         for (Tiro tiro : tiros) {
             tiro.carregar();
             graficos.drawImage(tiro.getImagem(), tiro.getPosicaoEmX(), tiro.getPosicaoEmY(), this);
@@ -61,6 +66,10 @@ public class Fase extends JPanel implements ActionListener, KeyListener{
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE)
             personagem.atirar();
+
+        else if (e.getKeyCode() == KeyEvent.VK_R)
+            personagem.ultimate();
+        
         else
             personagem.mover(e);
     }
@@ -71,6 +80,16 @@ public class Fase extends JPanel implements ActionListener, KeyListener{
     @Override
     public void actionPerformed(ActionEvent e) {
             personagem.atualizar();
+            ArrayList<Especial> especiais = personagem.getEspeciais();
+            for (int i = especiais.size() - 1; i >= 0; i--) {
+                Especial especial = especiais.get(i);
+                if (especial.getPosicaoEmX() > LARGURA_DA_JANELA)
+                    // Remover da lista se estiver fora do campo de visão (LARGURA_DA_TELA)
+                    especiais.remove(i);
+                else
+                    // Atualizar a posição do tiro.
+                    especial.atualizar();
+            }
             ArrayList<Tiro> tiros = personagem.getTiros();
             for (int i = tiros.size() - 1; i >= 0; i--) {
                 Tiro tiro = tiros.get(i);
