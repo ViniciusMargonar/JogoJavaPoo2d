@@ -27,7 +27,7 @@ public class Fase extends JPanel implements ActionListener, KeyListener{
         this.setFocusable(true); // Permite o foco
         this.setDoubleBuffered(true); // Otimização do buffer
 
-        ImageIcon carregando = new ImageIcon("recursos\\planoDeFundo.jpg");
+        ImageIcon carregando = new ImageIcon("recursos\\planoDeFundo.gif");
         this.planoDeFundo = carregando.getImage();
 
         this.personagem = new Personagem(DESLOCAMENTO);

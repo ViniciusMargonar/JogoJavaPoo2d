@@ -18,7 +18,7 @@ public class Especial {
     }
 
     public void carregar() {
-        ImageIcon carregando = new ImageIcon("recursos\\especial.png");
+        ImageIcon carregando = new ImageIcon("recursos\\especial.gif");
         this.imagem = carregando.getImage();
         this.alturaImagem = this.imagem.getWidth(null);
         this.larguraImagem = this.imagem.getHeight(null);
