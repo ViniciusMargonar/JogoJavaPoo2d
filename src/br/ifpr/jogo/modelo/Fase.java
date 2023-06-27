@@ -21,19 +21,23 @@ public class Fase extends JPanel implements ActionListener, KeyListener{
     private static final int DELAY = 5;
     private Timer timer;
     private static final int LARGURA_DA_JANELA = 1920;
+    private static final int DESLOCAMENTO = 3; 
 
-    public Fase(){   
+     public Fase(){
+        this.setFocusable(true); // Permite o foco
+        this.setDoubleBuffered(true); // Otimização do buffer
 
-        setFocusable(true);            
-        setDoubleBuffered(true);       
         ImageIcon carregando = new ImageIcon("recursos\\planoDeFundo.jpg");
-        planoDeFundo = carregando.getImage();
-        personagem = new Personagem(); 
-        personagem.carregar();        
-        addKeyListener((KeyListener) this);          
-        timer = new Timer(DELAY, (ActionListener) this);   
-        timer.start();                
+        this.planoDeFundo = carregando.getImage();
+
+        this.personagem = new Personagem(DESLOCAMENTO);
+        this.personagem.carregar();
+        this.addKeyListener(this); // adiciona o listener do teclado
+
+        this.timer = new Timer(DELAY, this); // cria o timer
+        this.timer.start(); // inicia o timer
     }
+
     
     public void paint(Graphics g) {
 
