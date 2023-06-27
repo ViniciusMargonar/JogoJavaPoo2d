@@ -8,10 +8,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
+
 
 
 public class Fase extends JPanel implements ActionListener, KeyListener{
@@ -36,6 +37,13 @@ public class Fase extends JPanel implements ActionListener, KeyListener{
 
         this.timer = new Timer(DELAY, this); // cria o timer
         this.timer.start(); // inicia o timer
+
+        TrilhaSonora trilhaSonora = new TrilhaSonora();
+        trilhaSonora.carregar();
+        trilhaSonora.reproduzir();
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            trilhaSonora.parar();
+        }));
     }
 
     

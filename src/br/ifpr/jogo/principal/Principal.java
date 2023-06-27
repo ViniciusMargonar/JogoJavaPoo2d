@@ -7,7 +7,7 @@ import br.ifpr.jogo.modelo.Fase;
 public class Principal extends JFrame {
 
     public Principal() {
-        JOptionPane.showMessageDialog(this, "            LISTA DE COMANDOS\n\n MOVIMENTAR : WASD ou DIRECIONAIS\n\n ATIRAR : BARRA DE ESPAÇO\n\n ESPECIAL (10s) : R\n");
+        JOptionPane.showMessageDialog(this, "           LISTA DE COMANDOS\n\n MOVIMENTAR : WASD ou DIRECIONAIS\n\n ATIRAR : BARRA DE ESPAÇO\n\n ESPECIAL (10s) : R\n");
 
         Fase fase = new Fase();
         super.add(fase);
