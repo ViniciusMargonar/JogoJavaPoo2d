@@ -19,6 +19,7 @@ import java.util.ArrayList;
         private static final int POSICAO_INICIAL_Y = 100;
         private ArrayList<Tiro> tiros;
         private ArrayList<Especial> especiais;
+        private long ultimoUsoEspecial;
          
 
 
@@ -28,6 +29,7 @@ import java.util.ArrayList;
         this.posicaoEmY = POSICAO_INICIAL_Y;
         this.tiros = new ArrayList<Tiro>();
         this.especiais =  new ArrayList<Especial>();
+        this.ultimoUsoEspecial = 0;
 
     }
 
@@ -53,12 +55,17 @@ import java.util.ArrayList;
     }
 
     public void ultimate(){
-        int frenteNave = this.posicaoEmX + this.larguraImagem;
-        int meioNave =  this.posicaoEmY + (this.alturaImagem / 2);
+        long tempoAtual = System.currentTimeMillis();
 
-        
-        Especial especial = new Especial(frenteNave, meioNave);
-        this.especiais.add(especial);
+        if (tempoAtual - ultimoUsoEspecial >= 10000) {
+            int frenteNave = this.posicaoEmX + this.larguraImagem;
+            int meioNave =  this.posicaoEmY + (this.alturaImagem / 2);
+
+            
+            Especial especial = new Especial(frenteNave, meioNave);
+            this.especiais.add(especial);
+            ultimoUsoEspecial = tempoAtual;
+        }
     }
 
     
