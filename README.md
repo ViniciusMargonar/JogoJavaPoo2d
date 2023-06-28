@@ -38,7 +38,7 @@ Ataque Especial : R.
 ## Captura de Tela
 
 <p align="center">
-  <img Recursos="screenshot.png" alt="Screenshot" width="800">
+  <img src="recursos/screenshot.png" alt="Screenshot" width="800">
 </p>
 
 ## Requisitos
