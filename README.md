@@ -1,4 +1,4 @@
-<h1 align="center">Jogo em Java 2D - Programação Orientada a Objetos</h1>
+<h1 align="center">Jogo 2D em Java - Programação Orientada a Objetos</h1>
 
 <p align="center">
   <strong>Um jogo de plataforma 2D estilo space shooter!</strong>
