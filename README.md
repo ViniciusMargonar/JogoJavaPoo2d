@@ -1,18 +1,54 @@
-## Getting Started
+<h1 align="center">Jogo em Java 2D - Programação Orientada a Objetos</h1>
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+<p align="center">
+  <img src="screenshot.png" alt="Screenshot" width="600">
+</p>
 
-## Folder Structure
+<p align="center">
+  <strong>Um jogo de plataforma 2D estilo space shooter!</strong>
+</p>
 
-The workspace contains two folders by default, where:
+---
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Descrição
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Este jogo foi desenvolvido como projeto na disciplina de Programação Orientada a Objetos utilizando a linguagem Java e a biblioteca gráfica Java 2D.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+O objetivo do jogo é controlar uma nave espacial e eliminar todos os inimigos que aparecem na tela. O jogador pode mover a nave para a esquerda e para a direita, além de atirar projéteis para destruir os inimigos. O Jogador pode utilizar seu ataque especial ao pressionar a tecla R.
 
-## Dependency Management
+## Comandos
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Movimentar personagem : W A S D ou DIRECIONAIS do teclado;
+Atirar : Barra de Espaço;
+Ataque Especial : R.
+
+## Recursos Disponíveis
+
+- Gráficos em 2D;
+- Nave espacial controlável;
+- Ataques de projéteis;
+  
+## Será Implementado
+
+- Spawn de inimigos variados ;
+- Aumento de dificuldade progressiva;
+- Sistema de pontuação e vidas;
+- Efeitos sonoros.
+
+## Captura de Tela
+
+<p align="center">
+  <img src="screenshot.png" alt="Screenshot" width="800">
+</p>
+
+## Requisitos
+
+- Java Development Kit (JDK) 8 ou superior
+- Biblioteca gráfica Java 2D
+
+## Como Executar
+
+1. Certifique-se de ter o JDK instalado em seu sistema.
+2. Clone este repositório:
+
+
