@@ -1,7 +1,7 @@
 <h1 align="center">Jogo em Java 2D - Programação Orientada a Objetos</h1>
 
 <p align="center">
-  <img src="screenshot.png" alt="Screenshot" width="600">
+  <img src="Recursos/screenshot.png" alt="Screenshot" width="800">
 </p>
 
 <p align="center">
@@ -37,9 +37,7 @@ Ataque Especial : R.
 
 ## Captura de Tela
 
-<p align="center">
-  <img src="Recursos/screenshot.png" alt="Screenshot" width="800">
-</p>
+![Captura de Tela - Jogo](Recursos/screenshot.png)
 
 ## Requisitos
 
