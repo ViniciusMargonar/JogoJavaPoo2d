@@ -37,7 +37,7 @@ Ataque Especial : R.
 
 ## Captura de Tela
 
-![Captura de Tela - Jogo](Recursos/screenshot.png)
+![Captura de Tela - Jogo](Recursos/screenshot.PNG)
 
 ## Requisitos
 
