@@ -1,10 +1,6 @@
 <h1 align="center">Jogo em Java 2D - Programação Orientada a Objetos</h1>
 
 <p align="center">
-  <img src="Recursos/screenshot.png" alt="Screenshot" width="800">
-</p>
-
-<p align="center">
   <strong>Um jogo de plataforma 2D estilo space shooter!</strong>
 </p>
 
@@ -35,7 +31,7 @@ Ataque Especial : R.
 - Sistema de pontuação e vidas;
 - Efeitos sonoros.
 
-## Captura de Tela
+## Demonstraçao
 
 ![Captura de Tela - Jogo](Recursos/screenshot.PNG)
 
