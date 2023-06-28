@@ -14,9 +14,9 @@ O objetivo do jogo é controlar uma nave espacial e eliminar todos os inimigos q
 
 ## Comandos
 
-Movimentar personagem : W A S D ou DIRECIONAIS do teclado;
-Atirar : Barra de Espaço;
-Ataque Especial : R.
+- Movimentar personagem : W A S D ou DIRECIONAIS do teclado;
+- Atirar : Barra de Espaço;
+- Ataque Especial : R.
 
 ## Recursos Disponíveis
 
