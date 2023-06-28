@@ -35,14 +35,4 @@ O objetivo do jogo é controlar uma nave espacial e eliminar todos os inimigos q
 
 ![Captura de Tela - Jogo](Recursos/screenshot.PNG)
 
-## Requisitos
-
-- Java Development Kit (JDK) 8 ou superior
-- Biblioteca gráfica Java 2D
-
-## Como Executar
-
-1. Certifique-se de ter o JDK instalado em seu sistema.
-2. Clone este repositório:
-
 
