@@ -13,8 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
-
-
 public class Fase extends JPanel implements ActionListener, KeyListener{
 
     private Image planoDeFundo;
@@ -23,6 +21,10 @@ public class Fase extends JPanel implements ActionListener, KeyListener{
     private Timer timer;
     private static final int LARGURA_DA_JANELA = 1920;
     private static final int DESLOCAMENTO = 3; 
+    private ArrayList<Inimigo> inimigos;
+    private static final int QTDE_DE_INIMIGOS = 40;
+
+
 
      public Fase(){
         this.setFocusable(true); // Permite o foco
@@ -33,6 +35,9 @@ public class Fase extends JPanel implements ActionListener, KeyListener{
 
         this.personagem = new Personagem(DESLOCAMENTO);
         this.personagem.carregar();
+
+        this.inicializaInimigos();
+
         this.addKeyListener(this); // adiciona o listener do teclado
 
         this.timer = new Timer(DELAY, this); // cria o timer
@@ -45,26 +50,48 @@ public class Fase extends JPanel implements ActionListener, KeyListener{
             trilhaSonora.parar();
         }));
     }
-
-    
-    public void paint(Graphics g) {
+       
+    public void paint(Graphics g){
 
         Graphics2D graficos = (Graphics2D) g;
         graficos.drawImage(this.planoDeFundo, 0, 0,null);
-        graficos.drawImage(this.personagem.getImagem(), this.personagem.getPosicaoEmX(), this.personagem.getPosicaoEmY(),null);
+        graficos.drawImage(this.personagem.getImagem(), this.personagem.getPosicaoEmX(), this.personagem.getPosicaoEmY(),null);      
+        
         ArrayList<Especial> especiais = personagem.getEspeciais();
         for (Especial especial : especiais) {
             especial.carregar();
             graficos.drawImage(especial.getImagem(), especial.getPosicaoEmX(), especial.getPosicaoEmY(), this); 
         }   
+        
         ArrayList<Tiro> tiros = personagem.getTiros();   
         for (Tiro tiro : tiros) {
             tiro.carregar();
             graficos.drawImage(tiro.getImagem(), tiro.getPosicaoEmX(), tiro.getPosicaoEmY(), this);
         }
-
+        
+        for (Inimigo inimigo : inimigos) { 
+            inimigo.carregar(); 
+            graficos.drawImage(inimigo.getImagem(), inimigo.getPosicaoEmX(), inimigo.getPosicaoEmY(), this); 
+    
+        }
+        
         g.dispose();
     }
+
+    public void inicializaInimigos(){
+    inimigos = new ArrayList<Inimigo>();
+
+    for (int i = 0; i < QTDE_DE_INIMIGOS; i++) {
+        int x = (int) (Math.random() * 8000 + 1024);
+        int y = (int) (Math.random() * 650 + 30);
+
+        Inimigo inimigo = new Inimigo(x, y);
+        inimigos.add(inimigo);
+        }
+    }
+
+    
+
     @Override
     public void keyTyped(KeyEvent e) {
         // TODO Auto-generated method stub
@@ -88,6 +115,7 @@ public class Fase extends JPanel implements ActionListener, KeyListener{
     @Override
     public void actionPerformed(ActionEvent e) {
             personagem.atualizar();
+            
             ArrayList<Especial> especiais = personagem.getEspeciais();
             for (int i = especiais.size() - 1; i >= 0; i--) {
                 Especial especial = especiais.get(i);
@@ -98,6 +126,7 @@ public class Fase extends JPanel implements ActionListener, KeyListener{
                     // Atualizar a posição do tiro.
                     especial.atualizar();
             }
+
             ArrayList<Tiro> tiros = personagem.getTiros();
             for (int i = tiros.size() - 1; i >= 0; i--) {
                 Tiro tiro = tiros.get(i);
@@ -108,6 +137,15 @@ public class Fase extends JPanel implements ActionListener, KeyListener{
                     // Atualizar a posição do tiro.
                     tiro.atualizar();
             }
+
+            for (int i = 0; i < this.inimigos.size(); i++) {
+                Inimigo inimigo = this.inimigos.get(i);
+                if (inimigo.getPosicaoEmX() < 0)
+                    inimigos.remove(inimigo);
+                else
+                    inimigo.atualizar();
+                
+            }       
             repaint();
     }
 

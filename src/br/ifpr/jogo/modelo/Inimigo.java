@@ -2,6 +2,8 @@ package br.ifpr.jogo.modelo;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 
 public class Inimigo {
@@ -10,23 +12,23 @@ public class Inimigo {
     private Image imagem;
     private int larguraImagem;
     private int alturaImagem;
-    private static final int VELOCIDADE = 2;
+    private static final int VELOCIDADE = 5;
 
     public Inimigo(int xAleatorio, int yAleatorio) {
-    this.posicaoEmX = xAleatorio;
-    this.posicaoEmY = yAleatorio;
+        this.posicaoEmX = xAleatorio;
+        this.posicaoEmY = yAleatorio;
 }
 
-     public void carregar() {
+    public void carregar() {
         ImageIcon carregando = new ImageIcon("recursos\\inimigo.gif");
         this.imagem = carregando.getImage();
         this.alturaImagem = this.imagem.getWidth(null);
         this.larguraImagem = this.imagem.getHeight(null);
-}
+    }
 
     public void atualizar() {
-    this.posicaoEmX = this.posicaoEmX - VELOCIDADE;
-}
+        this.posicaoEmX = this.posicaoEmX - VELOCIDADE;
+    }
 
 
     public int getPosicaoEmX() {
