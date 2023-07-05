@@ -33,7 +33,7 @@ public class Fase extends JPanel implements ActionListener, KeyListener{
         ImageIcon carregando = new ImageIcon("recursos\\planoDeFundo.gif");
         this.planoDeFundo = carregando.getImage();
 
-        this.personagem = new Personagem(DESLOCAMENTO);
+        this.personagem = new Personagem();
         this.personagem.carregar();
 
         this.inicializaInimigos();

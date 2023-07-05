@@ -1,19 +1,13 @@
 package br.ifpr.jogo.modelo;
 
-import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-    public class Personagem {
+    public class Personagem extends ElementoGrafico{
 
-        private int posicaoEmX;
-        private int posicaoEmY;
         private int deslocamentoEmX;
         private int deslocamentoEmY;
-        private Image imagem;
-        private int larguraImagem;
-        private int alturaImagem;
         private static final int velocidadeDeslocamento = 10;
         private static final int POSICAO_INICIAL_X = 100;
         private static final int POSICAO_INICIAL_Y = 100;
@@ -24,30 +18,33 @@ import java.util.ArrayList;
 
 
 
-    public Personagem(int velocidadeDeslocamento) {
-        this.posicaoEmX = POSICAO_INICIAL_X;
-        this.posicaoEmY = POSICAO_INICIAL_Y;
+    public Personagem() {
         this.tiros = new ArrayList<Tiro>();
-        this.especiais =  new ArrayList<Especial>();
-        this.ultimoUsoEspecial = 0;
-
+        this.especiais = new ArrayList<Especial>();
+        this.deslocamentoEmX = 0;
+        this.deslocamentoEmY = 0;
+        setPosicaoEmX(POSICAO_INICIAL_X);
+        setPosicaoEmY(POSICAO_INICIAL_Y);
     }
 
-    public void carregar(){
-        ImageIcon carregando = new ImageIcon("recursos\\samurai.png");
-        this.imagem = carregando.getImage();
-        this.larguraImagem = this.imagem.getWidth(null);
-        this.alturaImagem = this.imagem.getHeight(null);
+
+    public void carregar() {
+        ImageIcon loading = new ImageIcon("recursos\\samurai.png");
+        setImagem(loading.getImage());
+        setAlturaImagem(getImagem().getWidth(null));
+        setLarguraImagem(getImagem().getHeight(null));
+        setPosicaoEmX(POSICAO_INICIAL_X);
+        setPosicaoEmY(POSICAO_INICIAL_Y);
     }
 
-    public void atualizar(){
-        this.posicaoEmX += this.deslocamentoEmX;
-        this.posicaoEmY += this.deslocamentoEmY;
+    public void atualizar() {
+       this.setPosicaoEmX((this.getPosicaoEmX() + this.getDeslocamentoEmX()));
+       this.setPosicaoEmY((this.getPosicaoEmY() + this.getDeslocamentoEmY()));
     }
 
     public void atirar(){
-        int frenteNave = this.posicaoEmX + this.larguraImagem;
-        int meioNave =  this.posicaoEmY + (this.alturaImagem / 2);
+        int frenteNave = this.getPosicaoEmX() + this.getLarguraImagem();
+        int meioNave =  this.getPosicaoEmY() + (this.getAlturaImagem() / 2);
 
         
         Tiro tiro = new Tiro(frenteNave, meioNave);
@@ -58,8 +55,8 @@ import java.util.ArrayList;
         long tempoAtual = System.currentTimeMillis();
 
         if (tempoAtual - ultimoUsoEspecial >= 10000) {
-            int frenteNave = this.posicaoEmX + this.larguraImagem;
-            int meioNave =  this.posicaoEmY + (this.alturaImagem / 2);
+            int frenteNave = this.getPosicaoEmX() + this.getLarguraImagem();
+            int meioNave =  this.getPosicaoEmY() + (this.getAlturaImagem() / 2);
 
             
             Especial especial = new Especial(frenteNave, meioNave);
@@ -134,23 +131,6 @@ import java.util.ArrayList;
         }
     }
 
-
-    public int getPosicaoEmX() {
-        return this.posicaoEmX;
-    }
-
-    public void setPosicaoEmX(int posicaoEmX) {
-        this.posicaoEmX = posicaoEmX;
-    }
-
-    public int getPosicaoEmY() {
-        return this.posicaoEmY;
-    }
-
-    public void setPosicaoEmY(int posicaoEmY) {
-        this.posicaoEmY = posicaoEmY;
-    }
-
     public int getDeslocamentoEmX() {
         return this.deslocamentoEmX;
     }
@@ -165,30 +145,6 @@ import java.util.ArrayList;
 
     public void setDeslocamentoEmY(int deslocamentoEmY) {
         this.deslocamentoEmY = deslocamentoEmY;
-    }
-
-    public Image getImagem() {
-        return this.imagem;
-    }
-
-    public void setImagem(Image imagem) {
-        this.imagem = imagem;
-    }
-
-    public int getLarguraImagem() {
-        return this.larguraImagem;
-    }
-
-    public void setLarguraImagem(int larguraImagem) {
-        this.larguraImagem = larguraImagem;
-    }
-
-    public int getAlturaImagem() {
-        return this.alturaImagem;
-    }
-
-    public void setAlturaImagem(int alturaImagem) {
-        this.alturaImagem = alturaImagem;
     }
 
     public int getVelocidadeDeslocamento() {
