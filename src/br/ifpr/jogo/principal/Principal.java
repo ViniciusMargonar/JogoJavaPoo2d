@@ -8,7 +8,7 @@ import br.ifpr.jogo.modelo.FaseUm;
 public class Principal extends JFrame {
 
     public Principal() {
-        JOptionPane.showMessageDialog(this, "           LISTA DE COMANDOS\n\n MOVIMENTAR : WASD ou DIRECIONAIS\n\n ATIRAR : BARRA DE ESPAÇO\n\n ESPECIAL : R\n\n INICIAR/REINICIAR : Q \n\n PAUSAR/DESPAUSAR: P");
+        JOptionPane.showMessageDialog(this, "           LISTA DE COMANDOS\n\n MOVIMENTAR : WASD ou DIRECIONAIS\n\n ATIRAR : BARRA DE ESPAÇO\n\n ESPECIAL : R\n\n INICIAR/REINICIAR : Q \n\n PAUSAR/DESPAUSAR: P \\n ESC : SAIR");
 
         Fase fase = new FaseUm();
         super.add(fase);
