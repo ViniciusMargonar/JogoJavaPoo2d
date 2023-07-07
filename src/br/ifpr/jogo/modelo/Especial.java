@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 
 public class Especial extends ElementoGrafico{
-    private static int VELOCIDADE = 5;
+    private static int VELOCIDADE = 4;
 
     public Especial(int posicaoPersonagemEmX, int posicaoPersonagemEmY) {
         this.carregar();

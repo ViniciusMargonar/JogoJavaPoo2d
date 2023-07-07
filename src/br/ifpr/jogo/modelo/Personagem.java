@@ -54,7 +54,7 @@ import java.util.ArrayList;
     public void ultimate(){
         long tempoAtual = System.currentTimeMillis();
 
-        if (tempoAtual - ultimoUsoEspecial >= 10000) {
+        if (tempoAtual - ultimoUsoEspecial >= 1000) {
             int frenteNave = this.getPosicaoEmX() + this.getLarguraImagem();
             int meioNave =  this.getPosicaoEmY() + (this.getAlturaImagem() / 2);
 

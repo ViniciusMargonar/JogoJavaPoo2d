@@ -11,6 +11,11 @@ private int larguraImagem;
 private int alturaImagem;
 private boolean visivel = true;
 
+
+
+    public Rectangle getRectangle() {
+        return new Rectangle(posicaoEmX, posicaoEmY, larguraImagem, alturaImagem);
+    }
     public boolean isVisivel() {
         return this.visivel;
     }

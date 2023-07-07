@@ -4,12 +4,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import br.ifpr.jogo.modelo.Fase;
+import br.ifpr.jogo.modelo.FaseUm;
 public class Principal extends JFrame {
 
     public Principal() {
-        JOptionPane.showMessageDialog(this, "           LISTA DE COMANDOS\n\n MOVIMENTAR : WASD ou DIRECIONAIS\n\n ATIRAR : BARRA DE ESPAÇO\n\n ESPECIAL (10s) : R\n");
+        JOptionPane.showMessageDialog(this, "           LISTA DE COMANDOS\n\n MOVIMENTAR : WASD ou DIRECIONAIS\n\n ATIRAR : BARRA DE ESPAÇO\n\n ESPECIAL : R\n\n INICIAR/REINICIAR : Q \n\n PAUSAR/DESPAUSAR: P");
 
-        Fase fase = new Fase();
+        Fase fase = new FaseUm();
         super.add(fase);
         setVisible(true);
         setSize(1920, 1080);
