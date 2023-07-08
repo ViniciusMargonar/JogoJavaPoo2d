@@ -208,7 +208,7 @@ public class FaseUm extends Fase{
         ArrayList<Especial> especiais = personagem.getEspeciais();
         for (int i = especiais.size() - 1; i >= 0; i--) {
                 Especial especial = especiais.get(i);
-                if (especial.getPosicaoEmX() > LARGURA_DA_JANELA)
+                if (especial.getPosicaoEmX() > LARGURA_DA_JANELA || !especial.getVisivel())
                     // Remover da lista se estiver fora do campo de visão (LARGURA_DA_TELA)
                     especiais.remove(i);
                 else
@@ -219,7 +219,7 @@ public class FaseUm extends Fase{
             ArrayList<Tiro> tiros = personagem.getTiros();
             for (int i = tiros.size() - 1; i >= 0; i--) {
                 Tiro tiro = tiros.get(i);
-                if (tiro.getPosicaoEmX() > LARGURA_DA_JANELA)
+                if (tiro.getPosicaoEmX() > LARGURA_DA_JANELA || !tiro.getVisivel())
                     // Remover da lista se estiver fora do campo de visão (LARGURA_DA_TELA)
                     tiros.remove(i);
                 else
@@ -229,7 +229,7 @@ public class FaseUm extends Fase{
 
             for (int i = 0; i < this.inimigos.size(); i++) {
                 Inimigo inimigo = this.inimigos.get(i);
-                if (inimigo.getPosicaoEmX() < 0)
+                if (inimigo.getPosicaoEmX() < 0 || !inimigo.getVisivel())
                     inimigos.remove(inimigo);
                 else
                     inimigo.atualizar();

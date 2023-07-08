@@ -15,7 +15,7 @@ public class Inimigo extends ElementoGrafico {
     }
 
     public void carregar() {
-        ImageIcon loading = new ImageIcon("recursos\\inimigo.gif");
+        ImageIcon loading = new ImageIcon("recursos\\inimigo.png");
         this.setImagem(loading.getImage());
         this.setAlturaImagem(this.getImagem().getWidth(null));
         this.setLarguraImagem(this.getImagem().getHeight(null));
