@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
         private int deslocamentoEmX;
         private int deslocamentoEmY;
-        private static final int velocidadeDeslocamento = 5;
+        private static final int velocidadeDeslocamento = 2;
         private static final int POSICAO_INICIAL_X = 100;
         private static final int POSICAO_INICIAL_Y = 100;
         private ArrayList<Tiro> tiros;
