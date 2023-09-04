@@ -85,7 +85,7 @@ public class FaseUm extends Fase{
         if(tempo >= 500){
             graficos.setColor(Color.WHITE);
             graficos.setFont(new Font("Calibri", Font.BOLD, 15));
-            graficos.drawString("ULTIMATE DISPONÍVEL (R)",  5, 40);
+            graficos.drawString("ULTIMATE DISPONÍVEL (R)", 20, 65);
         }
 
         graficos.dispose();
