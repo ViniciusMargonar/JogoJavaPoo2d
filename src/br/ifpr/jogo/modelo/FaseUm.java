@@ -19,19 +19,10 @@ import java.awt.Font;
 
 public class FaseUm extends Fase{
 
-    //private Image planoDeFundo;
-    private Personagem personagem; 
-    private static final int DELAY = 5;
-    private Timer timer; 
-    private static final int LARGURA_DA_JANELA = 1920; 
-    private ArrayList<Inimigo> inimigos; 
-    private static final int QTDE_DE_INIMIGOS = 40; 
-    protected boolean emJogo = true; 
     private int tempo = 0;
     private int pontos = 0;
     private boolean podeAtirar = true;
-    //private static final int DESLOCAMENTO = 3; 
-
+    private static final int PONTOS_POR_INIMIGO = 2;
 
      public FaseUm(){
         super();
@@ -82,14 +73,14 @@ public class FaseUm extends Fase{
                 inimigo.carregar();
                 graficos.drawImage(inimigo.getImagem(), inimigo.getPosicaoEmX(), inimigo.getPosicaoEmY(), this);
             }
+
+            super.desenhaPontuacao(graficos);
+            super.desenhaVidas(graficos);
+
         }else{
             ImageIcon fimJogo = new ImageIcon("recursos\\gameover.jpg");
             graficos.drawImage(fimJogo.getImage(), 0, 0, null);
         }
-
-        graficos.setColor(Color.WHITE);
-        graficos.setFont(new Font("Calibri", Font.BOLD, 15));
-        graficos.drawString("PONTUAÇÃO: " + pontos, 5, 20);
 
         if(tempo >= 500){
             graficos.setColor(Color.WHITE);
@@ -98,9 +89,7 @@ public class FaseUm extends Fase{
         }
 
         graficos.dispose();
-    }
-
-    
+    }      
   
     @Override
     public void inicializaInimigos(){
@@ -115,39 +104,42 @@ public class FaseUm extends Fase{
 
     @Override
     public void verificarColisoes() {
-        Rectangle formaPersonagem = personagem.getRectangle();
-
-        for(int i = 0; i < this.inimigos.size(); i++){
+        Rectangle formaPersonagem = this.personagem.getRectangle();
+        for (int i = 0; i < this.inimigos.size(); i++) {
             Inimigo inimigo = inimigos.get(i);
             Rectangle formaInimigo = inimigo.getRectangle();
-
-            if(formaInimigo.intersects(formaPersonagem)){
-                personagem.setVisivel(false);
+            if (formaInimigo.intersects(formaPersonagem)) {
+                personagem.perderVidas();
                 inimigo.setVisivel(false);
-                emJogo = false;
-                pontos = 0;
-            }
 
-            ArrayList<Tiro> tiros = personagem.getTiros();
-            for(int j = 0; j < tiros.size(); j++){
+                if (personagem.getVidas() <= 0) {
+                    personagem.perderVidas();
+                    emJogo = false;
+                    this.personagem.setVisivel(false);
+                    inimigo.setVisivel(false);
+                }
+
+            }
+            ArrayList<Tiro> tiros = this.personagem.getTiros();
+            for (int j = 0; j < tiros.size(); j++) {
                 Tiro tiro = tiros.get(j);
                 Rectangle formaTiro = tiro.getRectangle();
-
-                if(formaTiro.intersects(formaInimigo)){
+                if (formaInimigo.intersects(formaTiro)) {
+                    int pontuacaoAtual = this.personagem.getPontuacao();
+                    this.personagem.setPontuacao(pontuacaoAtual + PONTOS_POR_INIMIGO);
                     inimigo.setVisivel(false);
                     tiro.setVisivel(false);
-                    pontos += 10;
                 }
             }
-
-            ArrayList<Especial> especiais = personagem.getEspeciais();
-            for(int k = 0; k < especiais.size(); k++){
-                Especial especial = especiais.get(k);
-                Rectangle formaEspecial = especial.getRectangle();
-
-                if(formaEspecial.intersects(formaInimigo)){
+            ArrayList<Especial> ultimates = this.personagem.getEspeciais();
+            for (int a = 0; a < ultimates.size(); a++) {
+                Especial ultimate = ultimates.get(a);
+                Rectangle formaUltimate = ultimate.getRectangle();
+                if (formaInimigo.intersects(formaUltimate)) {
+                    int pontuacaoAtual = this.personagem.getPontuacao();
+                    this.personagem.setPontuacao(pontuacaoAtual + PONTOS_POR_INIMIGO);
                     inimigo.setVisivel(false);
-                    pontos += 20;
+                    ultimate.setVisivel(false);
                 }
             }
         }
@@ -185,24 +177,12 @@ public class FaseUm extends Fase{
             personagem.mover(e);
         }
 
-        if(e.getKeyCode() == KeyEvent.VK_P){
-            if(timer.isRunning()){
-                emJogo = false;
-                personagem.setVisivel(false);
-                timer.stop();
-            }else{
-                emJogo = true;
-                personagem.setVisivel(true);
-                timer.start();
-            }
-        }
-
         if(e.getKeyCode() == KeyEvent.VK_Q){
-            emJogo = true;
-            personagem.carregar();
-            this.inicializaInimigos();
-            pontos = 0;
-            timer.restart();
+           emJogo = true;
+           personagem.carregar();
+           this.inicializaInimigos();
+           pontos = 0;
+           timer.restart();
         }
 
     }

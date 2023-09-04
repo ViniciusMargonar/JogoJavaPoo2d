@@ -8,6 +8,10 @@ import java.util.ArrayList;
 
         private int deslocamentoEmX;
         private int deslocamentoEmY;
+
+        private int pontuacao;
+        private int vidas = 3;
+
         private static final int velocidadeDeslocamento = 2;
         private static final int POSICAO_INICIAL_X = 100;
         private static final int POSICAO_INICIAL_Y = 100;
@@ -168,6 +172,23 @@ import java.util.ArrayList;
         this.especiais = especiais;
     }
 
-    
+    public int getPontuacao() {
+        return pontuacao;
+    }
 
+    public void setPontuacao(int pontuacao) {
+        this.pontuacao = pontuacao;
+    }
+    
+    public int getVidas() {
+        return vidas;
+    }
+
+    public void setVidas(int vidas) {
+        this.vidas = vidas;
+    }
+
+    public void perderVidas() {
+        this.vidas--;
+    }
 }
