@@ -16,7 +16,7 @@ public abstract class Fase extends JPanel implements ActionListener, KeyListener
     public static final int DELAY = 5; 
     public static final int LARGURA_DA_JANELA = 1920; 
     public static final int QTDE_DE_ASTEROIDES = 5;
-    public static final int QTDE_DE_INIMIGOS = 40; 
+    public static final int QTDE_DE_INIMIGOS = 70; 
 
     protected Image planoDeFundo; 
     protected Personagem personagem; 
@@ -24,8 +24,6 @@ public abstract class Fase extends JPanel implements ActionListener, KeyListener
     protected ArrayList<Inimigo> inimigos; 
     protected boolean emJogo = true; 
     protected ArrayList<Asteroide> asteroides;
-    
-    //private static final int DESLOCAMENTO = 3; 
 
 
     public Fase(){

@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import br.ifpr.jogo.modelo.FaseUm;
 
 public class Principal extends JFrame {
-    
+
     public static final int LARGURA_DA_JANELA = 1920;
     public static final int ALTURA_DA_JANELA = 1080;
     

@@ -11,8 +11,6 @@ import java.util.ArrayList;
 
 import br.ifpr.jogo.principal.Principal;
 
-import static br.ifpr.jogo.modelo.Fase.QTDE_DE_ASTEROIDES;
-
 import java.awt.Color;
 import java.awt.Font;
 
@@ -20,7 +18,6 @@ import java.awt.Font;
 public class FaseUm extends Fase{
 
     private int tempo = 0;
-    private int pontos = 0;
     private boolean podeAtirar = true;
     private static final int PONTOS_POR_INIMIGO = 2;
 
@@ -117,6 +114,8 @@ public class FaseUm extends Fase{
                     emJogo = false;
                     this.personagem.setVisivel(false);
                     inimigo.setVisivel(false);
+                    this.personagem.setVidas(3); //Rever essa LINHA
+
                 }
 
             }
@@ -181,7 +180,6 @@ public class FaseUm extends Fase{
            emJogo = true;
            personagem.carregar();
            this.inicializaInimigos();
-           pontos = 0;
            timer.restart();
         }
 
