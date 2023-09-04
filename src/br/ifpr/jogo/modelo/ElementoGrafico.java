@@ -11,7 +11,9 @@ private int larguraImagem;
 private int alturaImagem;
 private boolean visivel = true;
 
+    public abstract void carregar();
 
+    public abstract void atualizar();
 
     public Rectangle getRectangle() {
         return new Rectangle(posicaoEmX, posicaoEmY, larguraImagem, alturaImagem);

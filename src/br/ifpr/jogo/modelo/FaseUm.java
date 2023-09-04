@@ -8,6 +8,11 @@ import javax.swing.ImageIcon;
 import java.awt.event.KeyEvent;
 import javax.swing.Timer;
 import java.util.ArrayList;
+
+import br.ifpr.jogo.principal.Principal;
+
+import static br.ifpr.jogo.modelo.Fase.QTDE_DE_ASTEROIDES;
+
 import java.awt.Color;
 import java.awt.Font;
 
@@ -34,8 +39,19 @@ public class FaseUm extends Fase{
         this.planoDeFundo = referencia.getImage();
         personagem = new Personagem();
         personagem.carregar();
+        this.inicializaElementosGraficosAdicionais();
         timer = new Timer(DELAY, this);
         timer.start();
+    }
+    @Override
+    public void inicializaElementosGraficosAdicionais() {
+        super.asteroides = new ArrayList<Asteroide>();
+            for (int i = 0; i < QTDE_DE_ASTEROIDES; i++) {
+                int x = (int) (Math.random() * Principal.LARGURA_DA_JANELA);
+                int y = (int) (Math.random() * Principal.ALTURA_DA_JANELA);
+                Asteroide asteroide = new Asteroide(x, y);
+                super.asteroides.add(asteroide);
+            }
     }
        
      @Override
@@ -44,6 +60,10 @@ public class FaseUm extends Fase{
 
         if(emJogo){
             graficos.drawImage(planoDeFundo, 0, 0, null);
+            for (Asteroide asteroide : asteroides) {
+                // Desenhar o asteroide na nossa tela.
+                graficos.drawImage(asteroide.getImagem(), asteroide.getPosicaoEmX(), asteroide.getPosicaoEmY(), this);
+            }
             graficos.drawImage(personagem.getImagem(), personagem.getPosicaoEmX(), personagem.getPosicaoEmY(), this);
             ArrayList<Tiro> tiros = personagem.getTiros();
             ArrayList<Especial> especiais = personagem.getEspeciais();
@@ -80,7 +100,7 @@ public class FaseUm extends Fase{
         graficos.dispose();
     }
 
-
+    
   
     @Override
     public void inicializaInimigos(){
@@ -204,7 +224,9 @@ public class FaseUm extends Fase{
     public void actionPerformed(ActionEvent e) {
         tempo++;
         personagem.atualizar();
-            
+        for (Asteroide asteroide : this.asteroides) {
+            asteroide.atualizar();
+        }
         ArrayList<Especial> especiais = personagem.getEspeciais();
         for (int i = especiais.size() - 1; i >= 0; i--) {
                 Especial especial = especiais.get(i);

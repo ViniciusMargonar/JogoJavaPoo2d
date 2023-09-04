@@ -1,22 +1,25 @@
 package br.ifpr.jogo.principal;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
-import br.ifpr.jogo.modelo.Fase;
+//import br.ifpr.jogo.modelo.Fase;
 import br.ifpr.jogo.modelo.FaseUm;
+
 public class Principal extends JFrame {
-
+    
+    public static final int LARGURA_DA_JANELA = 1920;
+    public static final int ALTURA_DA_JANELA = 1080;
+    
     public Principal() {
-        JOptionPane.showMessageDialog(this, "           LISTA DE COMANDOS\n\n MOVIMENTAR : WASD ou DIRECIONAIS\n\n ATIRAR : BARRA DE ESPAÇO\n\n ESPECIAL : R\n\n INICIAR/REINICIAR : Q \n\n PAUSAR/DESPAUSAR: P \n\n ESC : SAIR");
-
-        Fase fase = new FaseUm();
+       
+        FaseUm fase = new FaseUm();
         super.add(fase);
-        setVisible(true);
-        setSize(1920, 1080);
-        setTitle("Aventuras no Espaço");
-        setLocationRelativeTo(null);
-
+        super.setTitle("Space Invaders - R&M Version");
+        super.setSize(LARGURA_DA_JANELA, ALTURA_DA_JANELA);
+        super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        super.setLocationRelativeTo(null);
+        super.setResizable(false);
+        super.setVisible(true);
     }
 
     public static void main(String[] args) {
